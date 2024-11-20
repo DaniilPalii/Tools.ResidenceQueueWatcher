@@ -1,16 +1,17 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 
-namespace ResidenceQueueWatcher;
+namespace ResidenceQueueWatcher.WpfApplication;
 
-public sealed class QueueChecker(string url, IWebDriver webDriver, Logger logger) : IDisposable
+public sealed class QueueChecker(string url, IWebDriver webDriver, Logger logger)
 {
-	public async Task<Result> CheckAsync()
+	public async Task<bool> HasFreePlace()
 	{
 		try
 		{
+			webDriver.Close();
 			var options = webDriver.Manage();
-			options.Window.Size = new(width: 1112, height: 1100);
+			options.Window.Size = new(width: 1920, height: 1080);
 			var timeouts = options.Timeouts();
 			timeouts.ImplicitWait = TimeSpan.FromSeconds(5);
 			timeouts.PageLoad = TimeSpan.FromSeconds(5);
@@ -28,33 +29,18 @@ public sealed class QueueChecker(string url, IWebDriver webDriver, Logger logger
 			nextButton.Click();
 
 			var reservationInfoLabel = webDriver.FindElement(reservationInfoLabelSelector);
-			var reservationInfo = reservationInfoLabel.Text;
+			var reservationInfo = reservationInfoLabel.Text.Trim();
 			logger.Log(reservationInfo);
 
 			webDriver.Close();
 
-			return reservationInfo.Contains("Rezerwacje dostępne", StringComparison.CurrentCultureIgnoreCase)
-				? Result.HasFreePlace
-				: Result.NoFreePlace;
+			return reservationInfo.Contains("Rezerwacje dostępne", StringComparison.CurrentCultureIgnoreCase);
 		}
 		catch (Exception exception)
 		{
 			logger.Log(exception.Message);
-			return Result.UnhandledBehavior;
+			return false;
 		}
-	}
-
-	public void Dispose()
-	{
-		webDriver.Dispose();
-	}
-
-	public enum Result
-	{
-		HasFreePlace,
-		NoFreePlace,
-		CaptchaRequired,
-		UnhandledBehavior,
 	}
 
 	private readonly By applyForResidenceButtonSelector = By.CssSelector(".row:nth-child(2) > .mb-2 .btn");
