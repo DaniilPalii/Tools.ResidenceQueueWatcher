@@ -1,6 +1,4 @@
-using System.IO;
-
-namespace ResidenceQueueWatcher.WpfApplication;
+namespace ResidenceQueueWatcher.ConsoleApplication;
 
 public class Logger(string logDirectoryPath)
 {

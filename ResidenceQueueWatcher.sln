@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResidenceQueueWatcher.WpfApplication", "ResidenceQueueWatcher.WpfApplication\ResidenceQueueWatcher.WpfApplication.csproj", "{8A67DF56-63A5-450C-B222-8B9FE1801449}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResidenceQueueWatcher.ConsoleApplication", "ResidenceQueueWatcher.ConsoleApplication\ResidenceQueueWatcher.ConsoleApplication.csproj", "{EB81579C-E03B-4E88-B04C-DB2144CBA009}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{8A67DF56-63A5-450C-B222-8B9FE1801449}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A67DF56-63A5-450C-B222-8B9FE1801449}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A67DF56-63A5-450C-B222-8B9FE1801449}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB81579C-E03B-4E88-B04C-DB2144CBA009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB81579C-E03B-4E88-B04C-DB2144CBA009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB81579C-E03B-4E88-B04C-DB2144CBA009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB81579C-E03B-4E88-B04C-DB2144CBA009}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
